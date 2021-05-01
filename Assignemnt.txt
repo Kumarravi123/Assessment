@@ -1,0 +1,282 @@
+                                               Turing System Assessment 
+
+
+1.How do you find the missing number in a given integer array of 1 to 100?
+
+             /////////////// Example //////////////////////
+
+public class MissingNumber(){
+ pubic static void main(String[] arg)
+{
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Enter the n value: ");
+      int n = sc.nextInt();
+      int inpuArray[] = new int[n];
+      System.out.println("Enter numbers: ");
+      for(int i=0; i<=n-2; i++) {
+         inpuArray[i] = sc.nextInt();
+      }
+      //Finding the missing number form array//
+      int sumOfAll = (n*(n+1))/2;
+      int sumOfArray = 0;
+      for(int i=0; i<=n-2; i++) {
+         sumOfArray = sumOfArray+inpuArray[i];
+      }
+      int missingNumber = sumOfAll-sumOfArray;
+      System.out.println("Missing number is: "+missingNumber);
+}
+
+
+2.How are duplicates removed from a given array in Java?
+
+        ///////////// Example ///////////
+
+public class Duplicate()
+{
+public static int removeArrayElements(int array[], int n){
+if(n==0 || n==1){
+return n;
+}
+int j = 0;
+for (int i=0; i < n-1; i++){
+if (array[i] != array[i+1]){
+array[j++] = array[i];
+}
+}
+array[j++] = array[n-1];
+return j;
+}
+public static void main (String[] args) {
+int array[] = {18,18,25,25,25,28,28,29};
+int length = array.length;
+length = removeArrayElements(array, length);
+for(int i=0; i<length; i++)
+System.out.print(array[i]+" ");
+
+}
+}
+
+
+3.How do you find the middle element of a singly linked list in one pass?
+
+        /////// Example //////////////
+
+
+function middle(start) {
+
+ var middle = start
+
+ var nextnode = start
+
+ var do_increment = false;
+
+while (nextnode.next != null) {
+
+ if (do_increment) {
+
+   middle = middle.next;
+
+        }
+
+do_increment = !do_increment;
+
+nextnode = nextnode.next;
+
+    }
+
+    return middle;
+}
+
+
+4.How do you find the length of a singly linked list
+
+       /////// Example ///////
+
+public int length(){
+int count=0; 
+Node current = this.head; 
+while(current != null)
+{ 
+count++; 
+current=current.next()
+} 
+return count; 
+}
+
+5.How do you check if a string contains only digits?
+
+         //// Example ////
+
+class StringNumbers {
+ public static boolean onlyDigits(String str, int n)
+    {
+       
+        for (int i = 0; i < n; i++) {
+            if (str.charAt(i) >= '0'
+                && str.charAt(i) <= '9') {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        return false;
+    }
+  
+    public static void main(String args[])
+    {
+         String str = "1234";
+        int len = str.length();
+        System.out.println(onlyDigits(str, len));
+    }
+}
+
+6.How do you reverse words in a given sentence without using any library method?
+
+           /////// Example /////
+
+
+class Reverse{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Original string : ");
+        String originalStr = scanner.nextLine();
+        scanner.close();
+         String words[] = originalStr.split("\\s");
+        String reversedString = "";
+ 
+        for (int i = 0; i < words.length; i++) { 
+            if (i == words.length - 1) 
+                reversedString = words[i] + reversedString; 
+            else
+                reversedString = " " + words[i] + reversedString; 
+        } 
+ 
+        System.out.print("Reversed string : " + reversedString);
+    }
+}
+
+7.How is a binary search tree implemented?
+       
+       /////  Algorithm   /////
+
+struct node* search(int data){
+   struct node *current = root;
+   printf("Visiting elements: ");
+	
+   while(current->data != data){
+	
+      if(current != NULL) {
+         printf("%d ",current->data);
+			
+         //go to left tree
+         if(current->data > data){
+            current = current->leftChild;
+         }  //else go to right tree
+         else {                
+            current = current->rightChild;
+         }
+			
+         //not found
+         if(current == NULL){
+            return NULL;
+         }
+      }			
+   }
+   
+   return current;
+}
+
+
+8.How are all leaves of a binary search tree printed?
+
+         //// Example ///////
+
+public static void printLeaves(TreeNode node) { 
+ if (node == null) { 
+return; 
+} 
+if (node.isLeaf()) 
+{ 
+System.out.printf("%s ", node.value); 
+} 
+printLeaves(node.left);
+printLeaves(node.right);
+}
+
+
+9.How is a bubble sort algorithm implemented?
+
+       ///// Algorithm ///////////
+
+begin BubbleSort(list)
+
+   for all elements of list
+      if list[i] > list[i+1]
+         swap(list[i], list[i+1])
+      end if
+   end for
+   
+   return list
+   
+end BubbleSort
+
+
+10.How is a merge sort algorithm implemented
+
+void merge(int Arr[], int start, int mid, int end) {
+
+	int temp[] = new int[end - start + 1];
+
+	
+	int i = start, j = mid+1, k = 0;
+
+	
+	while(i <= mid && j <= end) {
+		if(Arr[i] <= Arr[j]) {
+			temp[k] = Arr[i];
+			k += 1; i += 1;
+		}
+		else {
+			temp[k] = Arr[j];
+			k += 1; j += 1;
+		}
+	}
+	while(i <= mid) {
+		temp[k] = Arr[i];
+		k += 1; i += 1;
+	}
+
+	while(j <= end) {
+		temp[k] = Arr[j];
+		k += 1; j += 1;
+	}
+
+	for(i = start; i <= end; i += 1) {
+		Arr[i] = temp[i - start]
+	}
+}
+
+void mergeSort(int Arr[], int start, int end) {
+
+	if(start < end) {
+		int mid = (start + end) / 2;
+		mergeSort(Arr, start, mid);
+		mergeSort(Arr, mid+1, end);
+		merge(Arr, start, mid, end);
+	}
+}
+
+
+                                          //////////////////////  The End ....   ///////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
